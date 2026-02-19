@@ -171,6 +171,7 @@ a {
   left: -15%;
   width: 130%;
   height: 120%;
+  max-width: none;
   object-fit: cover;
   object-position: center 28%;
   opacity: 0;
