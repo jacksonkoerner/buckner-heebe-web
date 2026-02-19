@@ -160,7 +160,7 @@ a {
 }
 
 .hero__backdrop {
-  background-image: url("images/buckner-coaching-1.jpg");
+  background-image: url("images/buckner-coaching-2.jpg");
   background-size: cover;
   background-position: center 28%;
   transform: scale(1.06);
@@ -311,6 +311,11 @@ p {
   box-shadow: var(--shadow);
 }
 
+.about__media img {
+  width: 100%;
+  height: auto;
+}
+
 .cards {
   margin-top: 1.8rem;
   display: grid;
@@ -393,7 +398,7 @@ p {
   margin: 0;
   border-radius: var(--radius-md);
   overflow: hidden;
-  min-height: 240px;
+  aspect-ratio: 4 / 3;
   box-shadow: var(--shadow);
 }
 
@@ -410,6 +415,7 @@ p {
 
 .gallery-item--wide {
   grid-column: span 2;
+  aspect-ratio: 16 / 9;
 }
 
 .contact-list {
