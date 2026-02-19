@@ -5,6 +5,7 @@ const reveals = document.querySelectorAll('.reveal');
 const contactForm = document.querySelector('.contact-form');
 const formNote = document.querySelector('.form-note');
 const yearEl = document.querySelector('#year');
+const heroImages = document.querySelectorAll('.hero__image');
 
 if (yearEl) {
   yearEl.textContent = String(new Date().getFullYear());
@@ -65,4 +66,15 @@ if (contactForm && formNote) {
     formNote.textContent = 'Opening your email client to send your inquiry.';
     contactForm.reset();
   });
+}
+
+if (heroImages.length === 2 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let activeIndex = 0;
+  const slideDurationMs = 6000;
+
+  setInterval(() => {
+    heroImages[activeIndex].classList.remove('is-active');
+    activeIndex = (activeIndex + 1) % heroImages.length;
+    heroImages[activeIndex].classList.add('is-active');
+  }, slideDurationMs);
 }

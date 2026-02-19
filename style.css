@@ -151,22 +151,49 @@ a {
   display: grid;
   align-items: end;
   overflow: hidden;
+  --hero-fade-duration: 1400ms;
 }
 
-.hero__backdrop,
+.hero__media,
 .hero__overlay {
   position: absolute;
   inset: 0;
 }
 
-.hero__backdrop {
-  background-image: url("images/buckner-coaching-2.jpg");
-  background-size: cover;
-  background-position: center 28%;
-  transform: scale(1.06);
+.hero__media {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity var(--hero-fade-duration) ease-in-out;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.hero__image.is-active {
+  opacity: 1;
+}
+
+.hero__image--one {
+  transform-origin: left center;
+}
+
+.hero__image--two {
+  transform-origin: right center;
 }
 
 .hero__overlay {
+  z-index: 1;
   background:
     radial-gradient(circle at 85% 20%, rgba(46, 125, 50, 0.28), transparent 30%),
     linear-gradient(100deg, rgba(15, 27, 77, 0.92), rgba(15, 27, 77, 0.58));
@@ -174,10 +201,43 @@ a {
 
 .hero__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   color: var(--white);
   padding: 8rem 0 5rem;
   max-width: 680px;
+}
+
+@keyframes hero-pan-ltr {
+  from {
+    transform: scale(1.1) translateX(-4%);
+  }
+  to {
+    transform: scale(1.1) translateX(4%);
+  }
+}
+
+@keyframes hero-pan-rtl {
+  from {
+    transform: scale(1.1) translateX(4%);
+  }
+  to {
+    transform: scale(1.1) translateX(-4%);
+  }
+}
+
+@keyframes hero-zoom-desktop {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.04);
+  }
+}
+
+@media (min-width: 761px) {
+  .hero__image.is-active {
+    animation: hero-zoom-desktop 6s linear both;
+  }
 }
 
 .kicker,
@@ -551,6 +611,14 @@ p {
     padding: 7rem 0 3.8rem;
   }
 
+  .hero__image--one.is-active {
+    animation: hero-pan-ltr 6s linear both;
+  }
+
+  .hero__image--two.is-active {
+    animation: hero-pan-rtl 6s linear both;
+  }
+
   .gallery-grid {
     grid-template-columns: 1fr;
   }
@@ -581,8 +649,13 @@ p {
   .reveal.is-visible,
   .btn,
   .gallery-item img,
-  .site-nav {
+  .site-nav,
+  .hero__image {
     transition: none;
+  }
+
+  .hero__image {
+    animation: none;
   }
 
   .btn:hover,
