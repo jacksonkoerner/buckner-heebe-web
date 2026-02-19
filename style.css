@@ -613,11 +613,11 @@ p {
   }
 
   .hero__image--one.is-active {
-    animation: hero-pan-ltr 6s linear both;
+    animation: hero-pan-rtl 6s linear both;
   }
 
   .hero__image--two.is-active {
-    animation: hero-pan-rtl 6s linear both;
+    animation: hero-pan-ltr 6s linear both;
   }
 
   .gallery-grid {
