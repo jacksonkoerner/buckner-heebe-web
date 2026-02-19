@@ -186,11 +186,13 @@ a {
 }
 
 .hero__image--one {
-  transform-origin: left center;
+  transform-origin: right center;
+  object-position: 80% center;
 }
 
 .hero__image--two {
-  transform-origin: right center;
+  transform-origin: left center;
+  object-position: 30% 40%;
 }
 
 .hero__overlay {
@@ -613,11 +615,11 @@ p {
   }
 
   .hero__image--one.is-active {
-    animation: hero-pan-ltr 6s linear both;
+    animation: hero-pan-rtl 6s linear both;
   }
 
   .hero__image--two.is-active {
-    animation: hero-pan-rtl 6s linear both;
+    animation: hero-pan-ltr 6s linear both;
   }
 
   .gallery-grid {
